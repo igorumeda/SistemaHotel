@@ -92,9 +92,10 @@ namespace SistemaHotel
             this.Controls.Add(this.pnlLogin);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "FrmLogin";
-            this.Text = "Login";
+            this.Text = "Sistema Hotel";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLogin_KeyDown);

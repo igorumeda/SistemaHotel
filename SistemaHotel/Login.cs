@@ -41,10 +41,14 @@ namespace SistemaHotel
 
         private void ChamarLogin ()
         {
-            if (edtUsuario.Text == "" || edtSenha.Text == "")
+            if (edtUsuario.Text.Trim() == "" || edtSenha.Text.Trim() == "")
             {
-                MessageBox.Show("Preencha os campos Usuário e Senha");
+                MessageBox.Show("Preencha os campos Usuário e Senha", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 edtUsuario.Focus();
+                if(edtUsuario.Text.Trim() == "")
+                {
+                    edtUsuario.Text = "";
+                }
                 return;
             }
 

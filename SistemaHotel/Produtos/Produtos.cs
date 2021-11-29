@@ -8,60 +8,51 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SistemaHotel.Cadastros
+namespace SistemaHotel.Produtos
 {
-    public partial class FrmFuncionarios : Form
+    public partial class FrmProdutos : Form
     {
-        public FrmFuncionarios()
+        public FrmProdutos()
         {
             InitializeComponent();
         }
 
+        private void LimparFoto()
+        {
+            ImgProduto.Image = Properties.Resources.icon_photo;
+        }
         private void habilitarCampos()
         {
-            EdtNome.Enabled = true;
-            EdtCPF.Enabled = true;
-            EdtEndereco.Enabled = true;
-            CboxCargo.Enabled = true;
-            EdtTelefone.Enabled = true;
+            EdtNome.Enabled         = true;
+            EdtDescricao.Enabled    = true;
+            EdtValor.Enabled        = true;
+            CboxFornecedor.Enabled  = true;
+            EdtEstoque.Enabled      = true;
+            BtnImgAnexa.Enabled     = true;
+            BtnImgRemove.Enabled    = true;
         }
         private void desabilitarCampos()
         {
-            EdtNome.Enabled = false;
-            EdtCPF.Enabled = false;
-            EdtEndereco.Enabled = false;
-            CboxCargo.Enabled = false;
-            EdtTelefone.Enabled = false;
+            EdtNome.Enabled         = false;
+            EdtDescricao.Enabled    = false;
+            EdtValor.Enabled        = false;
+            CboxFornecedor.Enabled  = false;
+            EdtEstoque.Enabled      = false;
+            BtnImgAnexa.Enabled     = false;
+            BtnImgRemove.Enabled    = false;
         }
         private void limparCampos()
         {
-            EdtNome.Text = "";
-            EdtCPF.Text = "";
-            EdtEndereco.Text = "";
-            EdtTelefone.Text = "";
+            EdtNome.Text        = "";
+            EdtDescricao.Text   = "";
+            EdtValor.Text       = "";
+            EdtEstoque.Text     = "";
+            LimparFoto();
         }
 
-        private void FrmFuncionarios_Load(object sender, EventArgs e)
+        private void FrmProdutos_Load(object sender, EventArgs e)
         {
-            
-        }
-
-        private void radioNome_CheckedChanged(object sender, EventArgs e)
-        {
-            EdtBuscaNome.Visible = true;
-            EdtBuscaCPF.Visible = false;
-
-            EdtBuscaNome.Text = "";
-            EdtBuscaCPF.Text = "";
-        }
-
-        private void radioCPF_CheckedChanged(object sender, EventArgs e)
-        {
-            EdtBuscaNome.Visible = false;
-            EdtBuscaCPF.Visible = true;
-
-            EdtBuscaNome.Text = "";
-            EdtBuscaCPF.Text = "";
+            LimparFoto();
         }
 
         private void BtnNovo_Click(object sender, EventArgs e)
@@ -81,13 +72,6 @@ namespace SistemaHotel.Cadastros
                 EdtNome.Focus();
                 return;
             }
-            int digitosCPF = EdtCPF.Text.Length;
-            if (EdtCPF.Text == "   .   .   -" || digitosCPF < 14)
-            {
-                MessageBox.Show("Preencha o CPF corretamente");
-                EdtCPF.Focus();
-                return;
-            }
 
             MessageBox.Show("Salvo com sucesso");
             BtnNovo.Enabled = true;
@@ -96,26 +80,12 @@ namespace SistemaHotel.Cadastros
             desabilitarCampos();
         }
 
-        private void Grid_Click(object sender, EventArgs e)
-        {
-            BtnEditar.Enabled = true;
-            BtnDeletar.Enabled = true;
-            BtnSalvar.Enabled = false;
-        }
-
         private void BtnEditar_Click(object sender, EventArgs e)
         {
             if (EdtNome.Text.Trim() == "")
             {
                 MessageBox.Show("Preencha o nome");
                 EdtNome.Focus();
-                return;
-            }
-            int digitosCPF = EdtCPF.Text.Length;
-            if (EdtCPF.Text == "   .   .   -" || digitosCPF < 14)
-            {
-                MessageBox.Show("Preencha o CPF corretamente");
-                EdtCPF.Focus();
                 return;
             }
 
@@ -136,5 +106,15 @@ namespace SistemaHotel.Cadastros
             }
         }
 
+        private void BtnImgAnexa_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Arquivos de imagens (*.jpg, *.png)|*.jpg;*.png";
+            if(dialog.ShowDialog() == DialogResult.OK)
+            {
+                string foto = dialog.FileName.ToString();
+                ImgProduto.ImageLocation = foto;
+            }
+        }
     }
 }

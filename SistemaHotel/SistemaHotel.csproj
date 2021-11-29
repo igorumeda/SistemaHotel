@@ -32,7 +32,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.27.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,12 +50,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cadastros\Cargos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastros\Cargos.Designer.cs">
+      <DependentUpon>Cargos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\Funcionarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Cadastros\Funcionarios.Designer.cs">
       <DependentUpon>Funcionarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Conexao.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,8 +75,17 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Produtos\Produtos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produtos\Produtos.Designer.cs">
+      <DependentUpon>Produtos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Cadastros\Cargos.resx">
+      <DependentUpon>Cargos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\Funcionarios.resx">
       <DependentUpon>Funcionarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -74,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produtos\Produtos.resx">
+      <DependentUpon>Produtos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -100,6 +123,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Fundo Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon-photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
