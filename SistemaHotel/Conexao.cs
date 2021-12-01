@@ -9,14 +9,14 @@ namespace SistemaHotel
 {
     class Conexao
     {
-        string conec = "SERVER=localhost; DATABASE=db_hotel; UID=root; PWD=; PORT=;";
-        public MySqlConnection con = null;
+        string dadosConexao = "SERVER=localhost; DATABASE=db_hotel; UID=root; PWD=; PORT=;";
+        public MySqlConnection MySqlConnection = null;
         public void AbrirCon()
         {
             try
             {
-                con = new MySqlConnection(conec);
-                con.Open();
+                MySqlConnection = new MySqlConnection(dadosConexao);
+                MySqlConnection.Open();
             }
             catch (Exception ex)
             {
@@ -28,8 +28,8 @@ namespace SistemaHotel
         {
             try
             {
-                con = new MySqlConnection(conec);
-                con.Close();
+                MySqlConnection = new MySqlConnection(dadosConexao);
+                MySqlConnection.Close();
             }
             catch (Exception ex)
             {

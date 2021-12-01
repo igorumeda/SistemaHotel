@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,11 @@ namespace SistemaHotel.Cadastros
 {
     public partial class FrmFuncionarios : Form
     {
+        Conexao connect = new Conexao();
+        string sql;
+        MySqlCommand cmd;
+        string id;
+
         public FrmFuncionarios()
         {
             InitializeComponent();
@@ -41,9 +47,26 @@ namespace SistemaHotel.Cadastros
             EdtTelefone.Text = "";
         }
 
+        private void CarregarComboBox()
+        {
+            connect.AbrirCon();
+
+            sql = "SELECT * FROM cargos ORDER BY cargo asc";
+            cmd = new MySqlCommand(sql, connect.MySqlConnection);
+            MySqlDataAdapter MyData = new MySqlDataAdapter();
+            MyData.SelectCommand = cmd;
+            DataTable MyDataTable = new DataTable();
+            MyData.Fill(MyDataTable);
+            CboxCargo.DataSource = MyDataTable;
+            CboxCargo.ValueMember = "id";
+            CboxCargo.DisplayMember = "cargo";            
+            
+            connect.FecharCon();
+        }
+
         private void FrmFuncionarios_Load(object sender, EventArgs e)
         {
-            
+            CarregarComboBox();
         }
 
         private void radioNome_CheckedChanged(object sender, EventArgs e)
@@ -86,6 +109,11 @@ namespace SistemaHotel.Cadastros
             {
                 MessageBox.Show("Preencha o CPF corretamente");
                 EdtCPF.Focus();
+                return;
+            }
+            if (CboxCargo.SelectedValue == null)
+            {
+                MessageBox.Show("Nenhum cargo cadastrado");
                 return;
             }
 

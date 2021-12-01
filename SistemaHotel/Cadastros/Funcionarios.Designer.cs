@@ -50,7 +50,7 @@ namespace SistemaHotel.Cadastros
             this.BtnSalvar = new System.Windows.Forms.Button();
             this.BtnEditar = new System.Windows.Forms.Button();
             this.BtnDeletar = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.btnBuscaCargo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,7 +160,7 @@ namespace SistemaHotel.Cadastros
             "Gerente"});
             this.CboxCargo.Location = new System.Drawing.Point(282, 77);
             this.CboxCargo.Name = "CboxCargo";
-            this.CboxCargo.Size = new System.Drawing.Size(209, 21);
+            this.CboxCargo.Size = new System.Drawing.Size(185, 21);
             this.CboxCargo.TabIndex = 5;
             // 
             // Grid
@@ -263,21 +263,21 @@ namespace SistemaHotel.Cadastros
             this.BtnDeletar.UseVisualStyleBackColor = true;
             this.BtnDeletar.Click += new System.EventHandler(this.BtnDeletar_Click);
             // 
-            // label7
+            // btnBuscaCargo
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(321, 181);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 54;
-            this.label7.Text = "label7";
+            this.btnBuscaCargo.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscaCargo.Image")));
+            this.btnBuscaCargo.Location = new System.Drawing.Point(468, 76);
+            this.btnBuscaCargo.Name = "btnBuscaCargo";
+            this.btnBuscaCargo.Size = new System.Drawing.Size(23, 23);
+            this.btnBuscaCargo.TabIndex = 54;
+            this.btnBuscaCargo.UseVisualStyleBackColor = true;
             // 
             // FrmFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(521, 504);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnBuscaCargo);
             this.Controls.Add(this.BtnDeletar);
             this.Controls.Add(this.BtnEditar);
             this.Controls.Add(this.BtnSalvar);
@@ -323,7 +323,6 @@ namespace SistemaHotel.Cadastros
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox EdtTelefone;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox CboxCargo;
         private System.Windows.Forms.DataGridView Grid;
         private System.Windows.Forms.RadioButton radioNome;
         private System.Windows.Forms.RadioButton radioCPF;
@@ -332,6 +331,7 @@ namespace SistemaHotel.Cadastros
         private System.Windows.Forms.Button BtnSalvar;
         private System.Windows.Forms.Button BtnEditar;
         private System.Windows.Forms.Button BtnDeletar;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox CboxCargo;
+        private System.Windows.Forms.Button btnBuscaCargo;
     }
 }

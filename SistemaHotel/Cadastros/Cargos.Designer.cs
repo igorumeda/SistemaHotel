@@ -129,6 +129,7 @@ namespace SistemaHotel.Cadastros
             this.BtnSalvar.Name = "BtnSalvar";
             this.BtnSalvar.Size = new System.Drawing.Size(75, 75);
             this.BtnSalvar.TabIndex = 61;
+            this.BtnSalvar.Text = "s";
             this.BtnSalvar.UseVisualStyleBackColor = true;
             this.BtnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 

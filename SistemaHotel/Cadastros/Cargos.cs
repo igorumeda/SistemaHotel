@@ -30,7 +30,7 @@ namespace SistemaHotel.Cadastros
         {
             con.AbrirCon();
             sql = "SELECT * FROM cargos ORDER BY cargo asc";
-            cmd = new MySqlCommand(sql, con.con);
+            cmd = new MySqlCommand(sql, con.MySqlConnection);
             MySqlDataAdapter da = new MySqlDataAdapter();
             da.SelectCommand = cmd;
             DataTable dt = new DataTable();
@@ -52,6 +52,7 @@ namespace SistemaHotel.Cadastros
 
         private void BtnNovo_Click(object sender, EventArgs e)
         {
+            EdtNome.Text = "";
             EdtNome.Enabled = true;
             BtnSalvar.Enabled = true;
             BtnNovo.Enabled = false;
@@ -68,7 +69,7 @@ namespace SistemaHotel.Cadastros
 
             con.AbrirCon();
             sql = "INSERT INTO cargos (cargo) VALUES (@cargo)";
-            cmd = new MySqlCommand(sql, con.con);
+            cmd = new MySqlCommand(sql, con.MySqlConnection);
             cmd.Parameters.AddWithValue("@cargo", EdtNome.Text);
             cmd.ExecuteNonQuery();
             con.FecharCon();
@@ -96,7 +97,7 @@ namespace SistemaHotel.Cadastros
         {
             con.AbrirCon();
             sql = "UPDATE cargos SET cargo = @cargo WHERE id = @id";
-            cmd = new MySqlCommand(sql, con.con);
+            cmd = new MySqlCommand(sql, con.MySqlConnection);
             cmd.Parameters.AddWithValue("@id", id);
             cmd.Parameters.AddWithValue("@cargo", EdtNome.Text);
             cmd.ExecuteNonQuery();
@@ -117,7 +118,7 @@ namespace SistemaHotel.Cadastros
             {
                 con.AbrirCon();
                 sql = "DELETE FROM cargos WHERE id = @id";
-                cmd = new MySqlCommand(sql, con.con);
+                cmd = new MySqlCommand(sql, con.MySqlConnection);
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
                 con.FecharCon();
